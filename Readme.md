@@ -1,24 +1,29 @@
-# ÕâÊÇÒ»¸öpyside2µÄÒ»¸öÓÃÓÚ±äÁ¿×Ô¶¯ÃüÃûµÄĞ¡³ÌĞò
+# è¿™æ˜¯ä¸€ä¸ªpyside2çš„ä¸€ä¸ªç”¨äºå˜é‡è‡ªåŠ¨å‘½åçš„å°ç¨‹åº
 
-## ĞŞ¸Ä
+## ä¿®æ”¹
 
-ĞèÒª ĞŞ¸Ä baidu_fanyi_api.py ÄÚµÄ  [access_token](https://ai.baidu.com/ai-doc/REFERENCE/Ck3dwjhhu)
+éœ€è¦ ä¿®æ”¹ baidu_fanyi_api.py å†…çš„  [access_token](https://ai.baidu.com/ai-doc/REFERENCE/Ck3dwjhhu)
 
 ```
-access_token = "ÊäÈëÄãµÄtoken"  # ÊäÈëÄãµÄtoken
+access_token = "è¾“å…¥ä½ çš„token"  # è¾“å…¥ä½ çš„token
 ```
 
-## ÔËĞĞ
+## è¿è¡Œ
 
 pip install pyside2
 
-## ÊäÈë
+## è¾“å…¥
 
 ```
-
+    è¾“å…¥ç”µå‹ä½å­—èŠ‚
+    è¾“å…¥ç”µå‹é«˜å­—èŠ‚
+    è¾“å‡ºç”µå‹ä½å­—èŠ‚
+    è¾“å‡ºç”µå‹é«˜å­—èŠ‚
+    è¾“å‡ºç”µæµä½å­—èŠ‚
+    è¾“å‡ºç”µæµé«˜å­—èŠ‚
 ```
 
-## Êä³ö
+## è¾“å‡º
 
 ```
     InputVol_L
