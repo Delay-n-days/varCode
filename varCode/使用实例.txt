@@ -1,0 +1,14 @@
+输入
+    输入电压低字节
+    输入电压高字节
+    输出电压低字节
+    输出电压高字节
+    输出电流低字节
+    输出电流高字节
+输出
+    InputVol_L
+    InputVol_H
+    OutputVol_L
+    OutputVol_H
+    OutputCur_L
+    OutputCur_H

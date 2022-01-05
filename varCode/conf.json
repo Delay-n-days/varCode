@@ -1,0 +1,68 @@
+{
+    "conversion": [
+        {
+            "src": "voltage",
+            "dst": " Vol"
+        },
+        {
+            "src": "current",
+            "dst": " Cur"
+        },
+        {
+            "src": "low byte",
+            "dst": "_ L"
+        },
+        {
+            "src": "high byte",
+            "dst": "_ H"
+        },
+        {
+            "src": "temperature",
+            "dst": "Temp"
+        },
+        {
+            "src": "Radiator",
+            "dst": "Radia"
+        },
+        {
+            "src": "frequency",
+            "dst": "Freq"
+        },
+        {
+            "src": "and",
+            "dst": " "
+        },
+        {
+            "src": "of",
+            "dst": " "
+        },
+        {
+            "src": "controller",
+            "dst": "Ctrl"
+        },
+        {
+            "src": "torque",
+            "dst": "torq"
+        },
+        {
+            "src": "",
+            "dst": ""
+        },
+        {
+            "src": "",
+            "dst": ""
+        },
+        {
+            "src": "",
+            "dst": ""
+        },
+        {
+            "src": "",
+            "dst": ""
+        },
+        {
+            "src": "",
+            "dst": ""
+        }
+    ]
+}
