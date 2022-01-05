@@ -1,4 +1,4 @@
-# 这是一个pyside2的一个用于变量自动命名的小程序
+# 这是一个pyside2的一个用于变量翻译命名的小程序
 
 ## 修改
 
@@ -11,6 +11,7 @@ access_token = "输入你的token"  # 输入你的token
 ## 运行
 
 pip install pyside2
+python main.py
 
 ## 输入
 
