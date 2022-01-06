@@ -1,7 +1,7 @@
 '''
 @Filename    :main.py
 @Description :pyqt
-@Author      :hjt
+@Author      :delay-n-days
 @version     :1.0
 @Date        :2022/01/04 15:13:47
 '''
@@ -19,6 +19,7 @@ import re
 import baidu_fanyi_api
 import json
 
+
 class Main(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         # 初始化继承的父类（QMainWindow）
@@ -31,69 +32,86 @@ class Main(QMainWindow, Ui_MainWindow):
         self.CreateSignalSlot()
         self.resize(1000, 700)
 
+    # 设置信号与槽
     def CreateSignalSlot(self):
-        self.pushButton_2.clicked.connect(self.transltor)  # 刷新按键
-        self.pushButton_3.clicked.connect(self.conversion)  # 刷新按键
-        self.pushButton_4.clicked.connect(self.TransltorAndConversion)  # 刷新按键
+        self.pushButton_2.clicked.connect(self.transltor) 
+        self.pushButton_3.clicked.connect(self.conversion)  
+        self.pushButton_4.clicked.connect(self.TransltorAndConversion)  
 
+    # 使用收费Api
     def transltor(self):
         str2 = ""
         str1 = self.textEdit_3.toPlainText()
-        Arr = baidu_fanyi_api.trans(str1)
+        Arr = baidu_fanyi_api.transUseMyapi(str1)
         for str in Arr:
             str2 += str['dst']+"\n"
         self.textEdit_4.setText(str2)
 
+    # 使用免费费Api
+    # def transltor(self):
+    #     str2 = ""
+    #     str1 = self.textEdit_3.toPlainText()
+    #     srcArrstr = str1.split("\n")
+    #     for srcStr in srcArrstr:
+    #         dst = baidu_fanyi_api.trans(srcStr)
+    #         str2 += dst + "\n"
+    #     self.textEdit_4.setText(str2)
+
+    # 把输入框中的数据保存到配置文件中
     def textEdittoJson(self):
         conversion = []
-        savedata={"conversion":conversion}
-        ArrEditText1=self.textEdit_5.toPlainText().split("\n")
-        ArrEditText2=self.textEdit_6.toPlainText().split("\n")
+        savedata = {"conversion": conversion}
+        ArrEditText1 = self.textEdit_5.toPlainText().split("\n")
+        ArrEditText2 = self.textEdit_6.toPlainText().split("\n")
         for i in range(len(ArrEditText1)):
             ll = {}
-            ll['src']=ArrEditText1[i]
-            ll['dst']=ArrEditText2[i]
+            ll['src'] = ArrEditText1[i]
+            ll['dst'] = ArrEditText2[i]
             conversion.append(ll)
-        savedata["conversion"]=conversion
-        with open("./conf.json","w") as f:
-            json.dump(savedata,f,indent=4)
+        savedata["conversion"] = conversion
+        with open("./conf.json", "w") as f:
+            json.dump(savedata, f, indent=4)
 
-    def tuofeng(self,str1):
+    # 驼峰命名法
+    def tuofeng(self, str1):
         Arrstr = str1.split("\n")
         a = ""
         for str in Arrstr:
             ArrS = str.split(" ")
             for s in ArrS:
                 s = s.capitalize()
-                a +=s
+                a += s
             a += "\n"
         return a
 
+    # 通过替换规则替换后,并使用选定的命名方法命名
     def conversion(self):
         self.textEdittoJson()
-        str1=self.textEdit_4.toPlainText()
-        with open("./conf.json","r") as f:
+        str1 = self.textEdit_4.toPlainText()
+        with open("./conf.json", "r") as f:
             arr3 = json.load(f)
             for arr in arr3['conversion']:
-               str1=str1.replace(str(arr['src']),str(arr['dst']))
-        if self.radioButton.isChecked() is True: # 驼峰命名法
-            str1=self.tuofeng(str1)
-        if self.radioButton_2.isChecked() is True: # 下划线命名法
+                str1 = str1.replace(str(arr['src']), str(arr['dst']))
+        if self.radioButton.isChecked() is True:  # 驼峰命名法
+            str1 = self.tuofeng(str1)
+        if self.radioButton_2.isChecked() is True:  # 下划线命名法
             while '  ' in str1:
                 str1 = str1.replace('  ', ' ')
-            str1=str1.replace(" ","_").casefold()
+            str1 = str1.replace(" ", "_").casefold()
         self.textEdit_7.setText(str1)
 
+    # 把配置文件里的json转移到输入框中
     def jsontoTextEdit(self):
-        EditText1=""
-        EditText2=""
-        with open("./conf.json","r") as f:
+        EditText1 = ""
+        EditText2 = ""
+        with open("./conf.json", "r") as f:
             arr3 = json.load(f)
             for arr in arr3['conversion']:
-                EditText1+=str(arr['src'])+"\n";
-                EditText2+=str(arr['dst'])+"\n";
+                EditText1 += str(arr['src']) + "\n"
+                EditText2 += str(arr['dst']) + "\n"
         self.textEdit_5.setText(EditText1)
         self.textEdit_6.setText(EditText2)
+
     def TransltorAndConversion(self):
         self.transltor()
         self.conversion()
