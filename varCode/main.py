@@ -39,23 +39,23 @@ class Main(QMainWindow, Ui_MainWindow):
         self.pushButton_4.clicked.connect(self.TransltorAndConversion)  
 
     # 使用收费Api
-    def transltor(self):
-        str2 = ""
-        str1 = self.textEdit_3.toPlainText()
-        Arr = baidu_fanyi_api.transUseMyapi(str1)
-        for str in Arr:
-            str2 += str['dst']+"\n"
-        self.textEdit_4.setText(str2)
-
-    # 使用免费费Api
     # def transltor(self):
     #     str2 = ""
     #     str1 = self.textEdit_3.toPlainText()
-    #     srcArrstr = str1.split("\n")
-    #     for srcStr in srcArrstr:
-    #         dst = baidu_fanyi_api.trans(srcStr)
-    #         str2 += dst + "\n"
+    #     Arr = baidu_fanyi_api.transUseMyapi(str1)
+    #     for str in Arr:
+    #         str2 += str['dst']+"\n"
     #     self.textEdit_4.setText(str2)
+
+    # 使用免费费Api
+    def transltor(self):
+        str2 = ""
+        str1 = self.textEdit_3.toPlainText()
+        srcArrstr = str1.split("\n")
+        for srcStr in srcArrstr:
+            dst = baidu_fanyi_api.trans(srcStr)
+            str2 += dst + "\n"
+        self.textEdit_4.setText(str2)
 
     # 把输入框中的数据保存到配置文件中
     def textEdittoJson(self):
